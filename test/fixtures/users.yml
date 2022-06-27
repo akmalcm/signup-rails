@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: John Doe
+  email: johndoe@email.com
+  phone: 0123456789
+  password: password
+
+two:
+  name: Malek
+  email: malek@email.com
+  phone: 01112345678
+  password: password
