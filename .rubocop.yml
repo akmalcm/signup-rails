@@ -1,0 +1,13 @@
+inherit_from:
+  - .rubocop_todo.yml
+  - .rubocop_base.yml
+
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  NewCops: disable
+  Exclude:
+    - "db/schema.rb"
