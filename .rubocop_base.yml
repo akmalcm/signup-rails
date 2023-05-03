@@ -1,0 +1,95 @@
+# Custom rules that are shared between main-app and Rails engines (engines/**)
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+Layout/MultilineOperationIndentation:
+  Description: >-
+    Checks indentation of binary operations that span more than
+    one line.
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+  SupportedStyles:
+    - require_no_space
+    - require_space
+
+Naming/PredicateName:
+  Description: "Check the names of predicate methods."
+  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#bool-methods-qmark"
+  AllowedMethods:
+    - has_active_class_session_search_data
+    - has_purchased_transactional
+
+RSpec/ImplicitExpect:
+  EnforcedStyle: should
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Exclude:
+  - config/puma.rb
+
+Style/MixinUsage:
+  Exclude:
+    - bin/setup
+    - bin/update
+
+Style/MultilineMemoization:
+  EnforcedStyle: keyword
+
+Style/NumericLiteralPrefix:
+  EnforcedOctalStyle: zero_only
+
+Style/StringLiterals:
+  Description: "Checks if uses of quotes match the configured preference."
+  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#consistent-string-literals"
+  EnforcedStyle: double_quotes
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  Description: "Checks for trailing comma in argument lists."
+  StyleGuide: "https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas"
+  EnforcedStyleForMultiline: no_comma
+  Enabled: true
+
+Style/TrailingCommaInArrayLiteral:
+  Description: "Checks for trailing comma in array literals."
+  EnforcedStyleForMultiline: no_comma
+  Enabled: true
+
+Style/TrailingCommaInHashLiteral:
+  Description: "Checks for trailing comma in hash literals."
+  EnforcedStyleForMultiline: no_comma
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: true
+  Exclude:
+    - Gemfile
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: true
+
+Style/DocumentationMethod:
+  Description: "Public methods."
+  Enabled: false
+  Exclude:
+    - "spec/**/*"
+    - "test/**/*"
+
+Style/RescueStandardError:
+  Enabled: true
+  EnforcedStyle: implicit
