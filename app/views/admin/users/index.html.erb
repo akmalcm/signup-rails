@@ -1,0 +1,42 @@
+<%
+if notice.present?
+  notice_class = if notice.include? 'successfully' then 'alert-success' else 'alert-danger' end
+%>
+  <p id="notice" class='alert <%= notice_class %>'>
+    <%= notice %>
+  </p>
+<% end %>
+
+  <h1>Users</h1>
+
+  <div class='table-responsive'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone %></td>
+            <td><%= link_to 'Show', admin_user_path(user), class:'btn btn-outline-info' %></td>
+            <td><%= link_to 'Edit', edit_admin_user_path(user), class:'btn btn-outline-primary' %></td>
+            <td><%= link_to 'Remove', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure to delete?' }, class:'btn btn-outline-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <%= link_to 'New User', new_admin_user_path, class:'btn btn-primary' %>

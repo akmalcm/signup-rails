@@ -1,0 +1,31 @@
+<%
+if notice.present?
+  notice_class = if notice.include? 'successfully' then 'alert-success' else 'alert-danger' end
+%>
+  <p id="notice" class='alert <%= notice_class %>'>
+      <%= notice %>
+  </p>
+<% end %>
+<h1>User Info</h1>
+<div class='form mb-4'>
+  <div class='form-group'>
+    <label for='user_name'>Name</label><br>
+    <input type='text' id='user_name' value='<%= @user.name %>' class='form-control' readonly>
+  </div>
+  <div class='form-group'>
+    <label for='user_phone'>Phone</label><br>
+    <input type='text' id='user_phone' value='<%= @user.phone %>' class='form-control' readonly>
+  </div>
+  <div class='form-group'>
+    <label for='user_email'>Email</label><br>
+    <input type='text' id='user_email' value='<%= @user.email %>' class='form-control' readonly>
+  </div>
+</div>
+<div class='d-flex'>
+  <div>
+    <%= link_to 'Edit', edit_admin_user_path(@user), class: 'btn btn-primary'  %>
+  </div>
+  <div class='ms-auto'>
+    <%= link_to 'Back', admin_users_path, class: 'btn btn-primary' %>
+  </div>
+</div>

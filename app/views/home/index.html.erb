@@ -1,0 +1,118 @@
+<h1 class='center-text'>API</h1>
+<p>
+  <ul>
+    <table>
+      <tr>
+        <td colspan=2>
+          <li><code>POST /api/v1/users/register</code></li>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <b>params:</b>
+              <ul>
+                <li>name: at least 2 characters</li>
+                <li>email: valid email</li>
+                <li>phone: valid phone no [\A(01)[0-46-9]-*[0-9]{7,8}\z]</li>
+                <li>password: at least 5 characters</li>
+                <li>password_confirmation: must be same as password</li>
+              </ul>
+        </td>
+        <td>
+          <b>response</b>
+          <pre><code>
+            data : {
+              code: 'success',
+              token: jwt_token,
+              exp: expired_time,
+              user: { user },
+            }
+          </code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2>
+          <li><code>GET /api/v1/users/login</code></li>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        <b>params:</b>
+              <ul>
+                  <li>email: valid email</li>
+                  <li>password: at least 5 characters</li>
+              </ul>
+        </td>
+        <td>
+          <b>response</b>
+          <pre><code>
+            data : {
+              code: 'success',
+              token: jwt_token,
+              exp: expired_time,
+              user: { name: user.name },
+            }
+          </code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2>
+          <li>
+            <code>GET /api/v1/users/profile</code>
+          </li>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>params:</b>
+          <ul>
+            <li>token: JWT token</li>
+          </ul>
+        </td>
+        <td>
+          <b>response</b>
+          <pre><code>
+          data : {
+            code: 'success',
+            user: { user },
+          }
+          </code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td colspan=2>
+          <li>
+            <code>POST /api/v1/users/profile/update</code>
+          </li>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>params:</b>
+          <ul>
+            <li>token: JWT token</li>
+          </ul>
+        </td>
+        <td>
+          <b>response</b>
+          <pre><code>
+          data : {
+            code: 'success',
+            user: { user },
+          }
+          </code></pre>
+        </td>
+      </tr>
+    </table>
+  </ul>
+</p>
+<h3>Admin Tool</h3>
+You can access it on <code>/admin</code> : <a href='/admin'>/admin</a>
+
+<script>
+$("pre code").each(function(){
+    var html = $(this).html();
+    var pattern = html.match(/\s*\n[\t\s]*/);
+    $(this).html(html.replace(new RegExp(pattern, "g"),'\n'));
+});
+</script>
