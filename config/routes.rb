@@ -17,6 +17,7 @@ Rails.application.routes.draw do
           post 'profile/update', action: :update
           post :login
           post :register
+          delete :destroy
         end
       end
 

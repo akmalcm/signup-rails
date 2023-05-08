@@ -1,19 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :request do
+RSpec.describe Admin::UsersController, type: :request do
   let!(:user) { create(:user) }
   let(:params) do
     {
       name: "test",
       email: "test@email.com",
       phone: "0123456789",
-      password: "testa"
+      password: "testa",
+      password_confirmation: "testa"
     }
   end
 
   context "get index" do
     it 'return success' do
-      get users_path
+      get admin_users_path
 
       expect(response).to be_successful
       expect(response.body).to include(user.name)
@@ -22,7 +23,7 @@ RSpec.describe UsersController, type: :request do
 
   context "get new" do
     it 'return success' do
-      get new_user_url
+      get new_admin_user_url
 
       expect(response).to be_successful
       expect(response.body).to include("New User")
@@ -31,17 +32,17 @@ RSpec.describe UsersController, type: :request do
 
   context "create user" do
     it 'return success' do
-      post users_url, params: { user: params }
+      post admin_users_url, params: { user: params }
 
       expect(response).to be_redirect
-      expect(response.redirect_url).to eq(user_url(User.last))
+      expect(response.redirect_url).to eq(admin_user_url(User.last))
       expect(User.count).to eq(2)
     end
   end
 
   context "show user" do
     it 'return success' do
-      get user_url(user)
+      get admin_user_url(user)
 
       expect(response).to be_successful
     end
@@ -49,7 +50,7 @@ RSpec.describe UsersController, type: :request do
 
   context "get edit" do
     it 'return success' do
-      get edit_user_url(user)
+      get edit_admin_user_url(user)
 
       expect(response).to be_successful
       expect(response.body).to include(user.name)
@@ -58,20 +59,20 @@ RSpec.describe UsersController, type: :request do
 
   context "update user" do
     it 'return success' do
-      patch user_url(user), params: { user: params }
+      patch admin_user_url(user), params: { user: params }
 
       expect(response).to be_redirect
-      expect(response.redirect_url).to eq(user_url(user))
+      expect(response.redirect_url).to eq(admin_user_url(user))
       expect(user.reload.name).to eq(params[:name])
     end
   end
 
   context "destroy user" do
     it 'return success' do
-      delete user_url(user)
+      delete admin_user_url(user)
 
       expect(response).to be_redirect
-      expect(response.redirect_url).to eq(users_url)
+      expect(response.redirect_url).to eq(admin_users_url)
       expect(User.count).to eq(0)
     end
   end
