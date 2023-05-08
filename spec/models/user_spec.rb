@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
         subject { build(:user, name: 'a') }
 
         it 'return errors' do
-          expect(subject.valid?).to be_falsey
+          expect(subject).not_to be_valid
           expect(subject.errors[:name].first).to eq("is too short (minimum is 2 characters)")
         end
       end
@@ -20,11 +20,12 @@ RSpec.describe User, type: :model do
 
     context "email" do
       context "unique" do
-        let!(:user)  { create(:user, email: 'a@test.com') }
         subject { build(:user, email: 'a@test.com') }
 
+        let!(:user) { create(:user, email: 'a@test.com') }
+
         it 'return errors' do
-          expect(subject.valid?).to be_falsey
+          expect(subject).not_to be_valid
           expect(subject.errors[:email].first).to eq("has already been taken")
         end
       end
@@ -33,7 +34,7 @@ RSpec.describe User, type: :model do
         subject { build(:user, email: 'a.com') }
 
         it 'return errors' do
-          expect(subject.valid?).to be_falsey
+          expect(subject).not_to be_valid
           expect(subject.errors[:email].first).to eq("is invalid")
         end
       end
@@ -44,7 +45,7 @@ RSpec.describe User, type: :model do
         subject { build(:user, phone: '011123') }
 
         it 'return errors' do
-          expect(subject.valid?).to be_falsey
+          expect(subject).not_to be_valid
           expect(subject.errors[:phone].first).to eq("is invalid")
         end
       end
@@ -55,7 +56,7 @@ RSpec.describe User, type: :model do
         subject { build(:user, password: 'aaaa') }
 
         it 'return errors' do
-          expect(subject.valid?).to be_falsey
+          expect(subject).not_to be_valid
           expect(subject.errors[:password].first).to eq("is too short (minimum is 5 characters)")
         end
       end

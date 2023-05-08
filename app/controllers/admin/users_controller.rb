@@ -46,7 +46,9 @@ module Admin
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :phone, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :phone, :password, :password_confirmation).tap do |param|
+        param[:password_confirmation] = param[:password_confirmation].presence || ''
+      end
     end
   end
 end

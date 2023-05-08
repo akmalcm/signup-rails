@@ -1,5 +1,6 @@
+json.partial! 'api/v1/partials/base.jbuilder', message: @message ||= 'success'
+
 json.set! :data do
-  json.partial! 'api/v1/partials/base.jbuilder', message: @message ||= 'success'
   json.token @token
   json.time @time
   json.set! :user do
