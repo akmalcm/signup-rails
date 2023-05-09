@@ -11,3 +11,6 @@ AllCops:
   NewCops: disable
   Exclude:
     - "db/schema.rb"
+    - "vendor/**/*"
+    - "db/**/*"
+    - "bin/**/*"
