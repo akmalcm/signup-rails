@@ -14,7 +14,7 @@ on:
 
 env:
   RAILS_ENV: test
-  RUBY_VERSION: 2.5.8
+  RUBY_VERSION: 3.2.2
 
 jobs:
   rubocop:
