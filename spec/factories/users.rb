@@ -17,5 +17,7 @@ FactoryBot.define do
     email { Faker::Internet.email(name: name) }
     password { Faker::Internet.password(min_length: 5) }
     phone { Faker::Base.numerify('019#######') }
+
+
   end
 end
