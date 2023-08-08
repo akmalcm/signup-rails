@@ -22,6 +22,7 @@ module Api
         else
           error(@user.errors.full_messages.join(", "), :unprocessable_entity)
         end
+
       end
 
       def login
